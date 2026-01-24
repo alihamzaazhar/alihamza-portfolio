@@ -20,7 +20,7 @@ const Home = () => {
               experiences.
             </p>
             <div className="flex flex-wrap items-center gap-4">
-              <a className="border border-[var(--primary)] px-4 py-2 text-sm text-white" href="#contact">
+              <a className="border border-[var(--primary)] px-4 py-2 text-sm text-white rounded-sm" href="#contact">
                 Contact me
               </a>
               <a className="text-sm text-[var(--gray)] underline hover:text-white" href="#projects">
@@ -39,7 +39,7 @@ const Home = () => {
                   </Suspense>
                 </div>
               </div>
-              <div className="mt-3 inline-flex items-center gap-2 border border-[var(--gray)] px-3 py-2 text-[13px] text-[var(--gray)]">
+              <div className="mt-3 inline-flex items-center gap-2 border border-[var(--gray)] px-3 py-2 text-[13px] text-[var(--gray)] rounded-sm">
                 <span className="inline-block h-2 w-2 border border-[var(--primary)] bg-[var(--primary-op)]" />
                 Currently working at GeniusXR
               </div>

@@ -1,3 +1,5 @@
+import uvrseImage from '../assets/uvrse.jpg'
+
 export type Project = {
   title: string
   description: string
@@ -7,10 +9,19 @@ export type Project = {
   githubUrl?: string
   iosUrl?: string
   androidUrl?: string
+  status?: string
   category: string
 }
 
 export const PROJECTS: Project[] = [
+  {
+    title: 'UVRSE',
+    description: 'AR/VR social platform with immersive 3D experiences and secure chat.',
+    image: uvrseImage,
+    techStack: ['React Native', 'AR/VR', '3D'],
+    status: 'Under development',
+    category: 'AR/VR',
+  },
   {
     title: 'Challe Activity',
     description: 'Activity tracking and challenge-based fitness experience.',

@@ -36,7 +36,7 @@ const SkillsSection = () => {
         <div className="min-w-[300px] flex-1">
           <div className="columns-2 gap-4 sm:columns-2 md:columns-3">
             {SKILL_BLOCKS.map((block) => (
-              <div key={block.title} className="mb-4 break-inside-avoid border border-[var(--gray)] p-4">
+              <div key={block.title} className="mb-4 break-inside-avoid border border-[var(--gray)] p-4 rounded-xl">
                 <p className="text-sm font-semibold">{block.title}</p>
                 <ul className="mt-3 space-y-2 text-[13px] text-[var(--gray)]">
                   {block.items.map((item) => (

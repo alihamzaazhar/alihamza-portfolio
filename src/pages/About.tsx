@@ -16,14 +16,31 @@ const About = () => {
               production-ready solutions.
             </p>
           </div>
-          <div className="border border-[var(--gray)] p-4 text-[13px] text-[var(--gray)]">
-            React Native Development · Cross-Platform Mobile Architecture · AR/VR &amp; 3D Mobile
-            Experiences · Native Android &amp; iOS Module Development · Three.js, WebView &amp; Gaussian
-            Splatting Integration · Unity–React Native Integration · Firebase Services &amp; REST API
-            Integration · E-commerce Applications &amp; Stripe Payments · Real-Time Applications
-            (WebSockets, Socket.io) · TypeScript &amp; JavaScript · Advanced Animations &amp; Gesture
-            Handling · Performance Optimization &amp; App Scalability
-          </div>
+          <div />
+        </div>
+      </section>
+
+      <section className="w-full">
+        <h2 className="h2">expertise</h2>
+        <div className="mt-10 flex flex-wrap gap-2 text-[13px] text-[var(--gray)]">
+          {[
+            'React Native Development',
+            'Cross-Platform Architecture',
+            'AR/VR & 3D Mobile',
+            'Native Android & iOS Modules',
+            'Three.js + WebView',
+            'Gaussian Splatting',
+            'Unity Integration',
+            'Firebase + REST APIs',
+            'E-commerce + Stripe',
+            'Real-time (WebSockets)',
+            'TypeScript & JavaScript',
+            'Performance Optimization',
+          ].map((item) => (
+            <span key={item} className="border border-[var(--gray)] px-3 py-1 rounded-sm">
+              {item}
+            </span>
+          ))}
         </div>
       </section>
 

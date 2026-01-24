@@ -35,7 +35,7 @@ const ContactSection = () => {
             ))}
           </div>
         </div>
-        <div className="min-w-[220px] border border-[var(--gray)] p-4">
+        <div className="min-w-[220px] border border-[var(--gray)] p-4 rounded-xl">
           <p className="text-sm font-semibold">message me here</p>
           <div className="mt-4 space-y-2 text-[13px] text-[var(--gray)]">
             {MEDIA.map((item) => (
