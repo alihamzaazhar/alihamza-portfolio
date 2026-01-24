@@ -1,0 +1,17 @@
+{
+  "name": "Ali Hamza Portfolio",
+  "short_name": "Portfolio",
+  "description": "Immersive 3D portfolio experience built with React and Three.js.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
