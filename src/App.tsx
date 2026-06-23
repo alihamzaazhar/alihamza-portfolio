@@ -1,57 +1,46 @@
-import { AnimatePresence } from 'framer-motion'
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useLocation,
+} from 'react-router-dom'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
-import PageTransition from './components/PageTransition'
-import SideSocial from './components/SideSocial'
 import About from './pages/About'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 
-const AnimatedRoutes = () => {
-  const location = useLocation()
+const ScrollManager = () => {
+  const { pathname, hash } = useLocation()
 
-  return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route
-          path="/"
-          element={
-            <PageTransition>
-              <Home />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <PageTransition>
-              <About />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="*"
-          element={
-            <PageTransition>
-              <NotFound />
-            </PageTransition>
-          }
-        />
-      </Routes>
-    </AnimatePresence>
-  )
+  useEffect(() => {
+    if (hash) {
+      const el = document.querySelector(hash)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+        return
+      }
+    }
+    window.scrollTo(0, 0)
+  }, [pathname, hash])
+
+  return null
 }
 
 const App = () => {
   return (
     <BrowserRouter>
-      <SideSocial />
+      <ScrollManager />
       <Navbar />
-      <main className="container content">
-        <AnimatedRoutes />
-        <Footer />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
+      <Footer />
     </BrowserRouter>
   )
 }

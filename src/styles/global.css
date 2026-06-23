@@ -1,13 +1,19 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&display=swap");
 
 :root {
-  --primary: #c778dd;
-  --primary-op: rgba(199, 120, 221, 0.1);
-  --gray: #abb2bf;
-  --gray-op: rgba(171, 178, 191, 0.1);
-  --background: #282c33;
-  --white: #ffffff;
+  --bg: #fbfaf7;
+  --bg-2: #f3f1ec;
+  --ink: #1a1a18;
+  --muted: #6f6b63;
+  --faint: #b8b3a8;
+  --line: #e3dfd6;
+  --accent: #b4532a;
+
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial,
+    sans-serif;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
 }
 
 * {
@@ -16,7 +22,10 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px;
+  scroll-padding-top: 88px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html,
@@ -26,160 +35,91 @@ body {
 }
 
 body {
-  font-family: "Fira Code", monospace;
-  background-color: var(--background);
-  color: var(--white);
+  font-family: var(--sans);
+  background-color: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 16px;
 }
 
 #root {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 112px;
-}
-
-body[data-cursor='true'] {
-  cursor: none;
-}
-
-.cursor-ring,
-.cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: translate(-100px, -100px);
-  pointer-events: none;
-  z-index: 80;
-}
-
-.cursor-ring {
-  width: 38px;
-  height: 38px;
-  margin: -19px 0 0 -19px;
-  border: 1px solid rgba(15, 23, 42, 0.4);
-  border-radius: 999px;
-  transition: transform 0.08s ease-out;
-}
-
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  margin: -4px 0 0 -4px;
-  background: rgba(15, 23, 42, 0.8);
-  border-radius: 999px;
-  transition: transform 0.04s ease-out;
-}
-
-.container {
-  max-width: 1024px;
-  margin: 0 auto;
-  position: relative;
-  width: 100%;
-}
-
-.content {
-  margin-top: 112px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 112px;
-}
-
-.h2 {
-  font-size: 32px;
-  font-weight: 500;
-  position: relative;
-  display: inline-block;
-}
-
-.h2::before {
-  content: "#";
-  color: var(--primary);
-  font-weight: 400;
-}
-
-.h2::after {
-  content: "";
-  display: block;
-  width: 10vw;
-  height: 1px;
-  background-color: var(--primary);
-  position: absolute;
-  right: -16px;
-  top: 50%;
-  transform: translate(100%, -50%);
-}
-
-.nav-link {
-  color: var(--gray);
-  position: relative;
-}
-
-.nav-link::before {
-  content: "#";
-  color: var(--primary);
-  font-weight: 400;
-}
-
-.nav-link-active {
-  color: var(--white);
-  font-weight: 600;
-}
-
-.nav-link:hover {
-  color: var(--white);
-}
-
-.media-header {
-  position: fixed;
-  left: 16px;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.media-header__line {
-  width: 1px;
-  height: 33vh;
-  background-color: var(--gray);
-  display: block;
-}
-
-.media-header__links {
-  display: grid;
-  gap: 8px;
-}
-
-.media-icon {
-  width: 32px;
-  height: 32px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--gray);
-  color: var(--gray);
-}
-
-.media-icon:hover {
-  color: var(--white);
-  border-color: var(--white);
-}
-
-@media (max-width: 1024px) {
-  .container {
-    padding: 16px;
-  }
-  .media-header {
-    display: none;
-  }
-  .content {
-    margin-top: 96px;
-  }
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Layout */
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.display {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Section header: "01 — Label" with hairline rule */
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.sec-num {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.sec-title {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3.5vw, 30px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.sec-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+  transform: translateY(-4px);
+}
+
+.label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.link-underline {
+  position: relative;
+  border-bottom: 1px solid var(--faint);
+  transition: border-color 0.2s, color 0.2s;
+}
+.link-underline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding: 0 20px;
+  }
 }

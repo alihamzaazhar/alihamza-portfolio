@@ -1,51 +1,41 @@
+import SectionHead from './SectionHead'
+
 const CONTACTS = [
   { label: 'Email', value: 'alihamza124.ah@gmail.com', href: 'mailto:alihamza124.ah@gmail.com' },
   { label: 'Phone', value: '+92 316 4136613', href: 'tel:+923164136613' },
-  { label: 'Location', value: 'Lahore, Pakistan' },
-]
-
-const MEDIA = [
-  { label: 'GitHub', href: 'https://github.com/alihamzaazhar' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ali-hamza-926041350/' },
-  { label: 'Email', href: 'mailto:alihamza124.ah@gmail.com' },
+  { label: 'GitHub', value: 'github.com/alihamzaazhar', href: 'https://github.com/alihamzaazhar' },
+  {
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/ali-hamza',
+    href: 'https://www.linkedin.com/in/ali-hamza-926041350/',
+  },
 ]
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="w-full">
-      <h2 className="h2">contacts</h2>
-      <div className="mt-12 flex flex-wrap items-start justify-between gap-8">
-        <div className="min-w-[280px] flex-1">
-          <p className="text-[15px] text-[var(--gray)]">
-            I’m interested in remote opportunities and collaboration in AR/VR, 3D,
-            and cross-platform mobile experiences.
-          </p>
-          <div className="mt-6 space-y-2 text-[13px] text-[var(--gray)]">
-            {CONTACTS.map((contact) => (
-              <div key={contact.label} className="flex items-center gap-2">
-                <span>{contact.label}:</span>
-                {contact.href ? (
-                  <a className="underline hover:text-white" href={contact.href}>
-                    {contact.value}
-                  </a>
-                ) : (
-                  <span>{contact.value}</span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="min-w-[220px] border border-[var(--gray)] p-4 rounded-xl">
-          <p className="text-sm font-semibold">message me here</p>
-          <div className="mt-4 space-y-2 text-[13px] text-[var(--gray)]">
-            {MEDIA.map((item) => (
-              <a key={item.label} className="block underline hover:text-white" href={item.href} rel="noreferrer" target="_blank">
-                {item.label}
+    <section id="contact" className="wrap pb-28 pt-24 scroll-mt-24">
+      <SectionHead num="04" title="Contact" />
+      <p className="display max-w-xl text-2xl leading-snug">
+        Open to remote work and collaboration in React&nbsp;Native, AR/VR, and
+        cross-platform mobile experiences.
+      </p>
+      <dl className="mt-10 grid gap-x-10 gap-y-4 sm:grid-cols-2">
+        {CONTACTS.map((c) => (
+          <div key={c.label} className="flex items-baseline gap-3">
+            <dt className="label w-20 shrink-0">{c.label}</dt>
+            <dd className="m-0">
+              <a
+                href={c.href}
+                target={c.href.startsWith('http') ? '_blank' : undefined}
+                rel="noreferrer"
+                className="link-underline text-[15px]"
+              >
+                {c.value}
               </a>
-            ))}
+            </dd>
           </div>
-        </div>
-      </div>
+        ))}
+      </dl>
     </section>
   )
 }

@@ -1,86 +1,135 @@
+import SectionHead from '../components/SectionHead'
+
+const EXPERIENCE = [
+  {
+    role: 'Software Engineer (React Native)',
+    org: 'GeniusXR',
+    period: 'Oct 2024 – Present',
+    place: 'Remote · Montreal, Canada',
+  },
+  {
+    role: 'Software Engineer (React Native)',
+    org: 'Cyber Advance Solutions',
+    period: 'Mar 2023 – Sept 2024',
+    place: 'Lahore, Pakistan',
+  },
+  {
+    role: 'Associate Software Engineer (Trainee)',
+    org: 'NexusXperts',
+    period: 'Sept 2022 – Feb 2023',
+    place: 'Lahore, Pakistan',
+  },
+  {
+    role: 'Application Consultant',
+    org: 'Techlogix',
+    period: 'Jun 2022 – Aug 2022',
+    place: 'Lahore, Pakistan',
+  },
+]
+
+const EDUCATION = [
+  {
+    title: 'B.S. Computer Science',
+    org: 'COMSATS University, Lahore',
+    period: '2018 – 2022',
+  },
+  {
+    title: 'Intermediate (F.Sc Pre-Engineering)',
+    org: 'Govt. Islamia College, Lahore',
+    period: '2016 – 2018',
+  },
+  {
+    title: 'Matriculation',
+    org: 'Govt. Central Model School, Lahore',
+    period: '2013 – 2015',
+  },
+]
+
+const CERTS = [
+  { title: 'Frontend Development', org: 'EduShapers', period: 'Jul – Sept 2021' },
+  {
+    title: 'SQL (Basic & Intermediate)',
+    org: 'HackerRank',
+    period: 'Aug – Sept 2022',
+  },
+]
+
 const About = () => {
   return (
-    <div className="flex w-full flex-col gap-[112px]">
-      <section className="w-full">
-        <h2 className="h2">about</h2>
-        <div className="mt-10 grid gap-8 md:grid-cols-2">
-          <div className="space-y-4 text-[15px] text-[var(--gray)]">
-            <p>
-              Software Engineer with strong experience in React Native and cross-platform
-              mobile development, specializing in AR/VR and 3D immersive experiences.
-              Proven ability to design, develop, and maintain scalable apps focused on
-              performance, reliability, and user experience.
-            </p>
-            <p>
-              Adept at collaborating with cross-functional teams to deliver innovative,
-              production-ready solutions.
-            </p>
-          </div>
-          <div />
-        </div>
+    <div className="pt-28">
+      {/* Intro */}
+      <section className="wrap pb-12">
+        <p className="label">About</p>
+        <p className="display mt-6 max-w-2xl text-2xl leading-snug sm:text-3xl">
+          Software Engineer with strong experience in React Native and
+          cross-platform mobile development, specializing in AR/VR and 3D
+          immersive experiences.
+        </p>
+        <p className="mt-6 max-w-2xl text-[16px] text-[var(--muted)]">
+          I design, develop and maintain scalable apps focused on performance,
+          reliability and user experience — and I enjoy collaborating with
+          cross-functional teams to ship innovative, production-ready solutions.
+        </p>
       </section>
 
-      <section className="w-full">
-        <h2 className="h2">expertise</h2>
-        <div className="mt-10 flex flex-wrap gap-2 text-[13px] text-[var(--gray)]">
-          {[
-            'React Native Development',
-            'Cross-Platform Architecture',
-            'AR/VR & 3D Mobile',
-            'Native Android & iOS Modules',
-            'Three.js + WebView',
-            'Gaussian Splatting',
-            'Unity Integration',
-            'Firebase + REST APIs',
-            'E-commerce + Stripe',
-            'Real-time (WebSockets)',
-            'TypeScript & JavaScript',
-            'Performance Optimization',
-          ].map((item) => (
-            <span key={item} className="border border-[var(--gray)] px-3 py-1 rounded-sm">
-              {item}
-            </span>
+      {/* Experience */}
+      <section className="wrap scroll-mt-24 py-16">
+        <SectionHead num="01" title="Experience" />
+        <ul className="border-t border-[var(--line)]">
+          {EXPERIENCE.map((job) => (
+            <li
+              key={job.org}
+              className="grid grid-cols-1 gap-1 border-b border-[var(--line)] py-6 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6"
+            >
+              <div>
+                <h3 className="display text-lg">{job.role}</h3>
+                <p className="text-[15px] text-[var(--muted)]">{job.org}</p>
+              </div>
+              <div className="text-left sm:text-right">
+                <p className="label">{job.period}</p>
+                <p className="mt-1 text-[13px] text-[var(--faint)]">{job.place}</p>
+              </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
-      <section className="w-full">
-        <h2 className="h2">experience</h2>
-        <div className="mt-10 grid gap-4 text-[15px] text-[var(--gray)]">
-          <div>
-            <p className="text-white">Software Engineer (React Native) — GeniusXR</p>
-            <p>Oct 2024 – Present · Remote (Montreal, Canada)</p>
-          </div>
-          <div>
-            <p className="text-white">Software Engineer (React Native) — Cyber Advance Solutions</p>
-            <p>Mar 2023 – Sept 2024 · Lahore, Pakistan</p>
-          </div>
-          <div>
-            <p className="text-white">Associate Software Engineer (Trainee) — NexusXperts</p>
-            <p>Sept 2022 – Feb 2023 · Lahore, Pakistan</p>
-          </div>
-          <div>
-            <p className="text-white">Application Consultant — Techlogix</p>
-            <p>Jun 2022 – Aug 2022 · Lahore, Pakistan</p>
-          </div>
-        </div>
+      {/* Education */}
+      <section className="wrap scroll-mt-24 py-16">
+        <SectionHead num="02" title="Education" />
+        <ul className="border-t border-[var(--line)]">
+          {EDUCATION.map((item) => (
+            <li
+              key={item.title}
+              className="grid grid-cols-1 gap-1 border-b border-[var(--line)] py-6 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6"
+            >
+              <div>
+                <h3 className="display text-lg">{item.title}</h3>
+                <p className="text-[15px] text-[var(--muted)]">{item.org}</p>
+              </div>
+              <p className="label sm:text-right">{item.period}</p>
+            </li>
+          ))}
+        </ul>
       </section>
 
-      <section className="w-full">
-        <h2 className="h2">education</h2>
-        <div className="mt-10 grid gap-3 text-[15px] text-[var(--gray)]">
-          <p>Bachelor’s — Computer Science · COMSATS University, Lahore (2018 – 2022)</p>
-          <p>Intermediate (F.Sc Pre-Engineering) · Govt. Islamia College, Lahore (2016 – 2018)</p>
-          <p>Matriculation · Govt. Central Model School, Lahore (2013 – 2015)</p>
-        </div>
-      </section>
-
-      <section className="w-full">
-        <h2 className="h2">certifications</h2>
-        <div className="mt-10 grid gap-3 text-[15px] text-[var(--gray)]">
-          <p>Frontend Development · EduShapers (Jul 2021 – Sept 2021)</p>
-          <p>SQL Certification (Basic &amp; Intermediate) · HackerRank (Aug 2022 – Sept 2022)</p>
-        </div>
+      {/* Certifications */}
+      <section className="wrap scroll-mt-24 py-16 pb-28">
+        <SectionHead num="03" title="Certifications" />
+        <ul className="border-t border-[var(--line)]">
+          {CERTS.map((item) => (
+            <li
+              key={item.title}
+              className="grid grid-cols-1 gap-1 border-b border-[var(--line)] py-6 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6"
+            >
+              <div>
+                <h3 className="display text-lg">{item.title}</h3>
+                <p className="text-[15px] text-[var(--muted)]">{item.org}</p>
+              </div>
+              <p className="label sm:text-right">{item.period}</p>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   )
