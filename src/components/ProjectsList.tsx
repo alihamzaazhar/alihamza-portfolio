@@ -2,10 +2,8 @@ import { PROJECTS } from '../data/projects'
 
 const ProjectsList = () => {
   return (
-    <ul className="border-t border-[var(--line)]">
-      {PROJECTS.map((project) => {
-        const primaryUrl =
-          project.liveUrl ?? project.iosUrl ?? project.androidUrl ?? project.githubUrl
+    <div className="card-grid sm:grid-cols-2 xl:grid-cols-3">
+      {PROJECTS.map((project, index) => {
         const links = [
           project.iosUrl && { label: 'iOS', href: project.iosUrl },
           project.androidUrl && { label: 'Android', href: project.androidUrl },
@@ -13,67 +11,62 @@ const ProjectsList = () => {
           project.githubUrl && { label: 'Code', href: project.githubUrl },
         ].filter(Boolean) as { label: string; href: string }[]
 
-        const Row = (
-          <div className="group flex items-start gap-5 py-6">
-            <img
-              src={project.image}
-              alt={project.title}
-              loading="lazy"
-              className="h-16 w-16 shrink-0 rounded-xl border border-[var(--line)] object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-            />
-            <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h3 className="display text-xl transition-colors group-hover:text-[var(--accent)]">
-                  {project.title}
-                </h3>
-                <span className="label">{project.category}</span>
+        const imageClass = project.mediaFit === 'contain' ? 'img-contain' : 'img-cover'
+
+        return (
+          <article
+            key={project.title}
+            className="card overflow-hidden"
+            data-reveal
+            data-reveal-delay={String(index * 80)}
+          >
+            <div className="img-frame">
+              <img src={project.image} alt={project.title} loading="lazy" className={imageClass} />
+            </div>
+            <div className="space-y-4 p-5">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="label">{project.category}</p>
+                  <h3 className="display mt-1 text-[22px] leading-tight">{project.title}</h3>
+                </div>
                 {project.status ? (
-                  <span className="label text-[var(--accent)]">· {project.status}</span>
+                  <span className="chip shrink-0 border-[rgba(94,234,212,0.28)] bg-[rgba(94,234,212,0.06)]">
+                    {project.status}
+                  </span>
                 ) : null}
               </div>
-              <p className="mt-1.5 max-w-prose text-[15px] text-[var(--muted)]">
-                {project.description}
-              </p>
-              <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
+
+              <p className="text-[15px] text-[var(--muted)]">{project.description}</p>
+
+              <div className="stack-list">
                 {project.techStack.map((tech) => (
-                  <span key={tech} className="label">
+                  <span key={tech} className="stack-pill">
                     {tech}
                   </span>
                 ))}
               </div>
-            </div>
-            {links.length ? (
-              <div className="hidden shrink-0 flex-col items-end gap-1 sm:flex">
-                {links.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="label link-underline"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {link.label} ↗
-                  </a>
-                ))}
-              </div>
-            ) : null}
-          </div>
-        )
 
-        return (
-          <li key={project.title} className="border-b border-[var(--line)]">
-            {primaryUrl ? (
-              <a href={primaryUrl} target="_blank" rel="noreferrer" className="block">
-                {Row}
-              </a>
-            ) : (
-              Row
-            )}
-          </li>
+              {links.length ? (
+                <div className="flex flex-wrap gap-4 pt-1">
+                  {links.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="label link-underline text-[12px]"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {link.label} ↗
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </article>
         )
       })}
-    </ul>
+    </div>
   )
 }
 

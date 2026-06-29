@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import About from './pages/About'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
+import useScrollReveal from './hooks/useScrollReveal'
 
 const ScrollManager = () => {
   const { pathname, hash } = useLocation()
@@ -28,19 +29,30 @@ const ScrollManager = () => {
   return null
 }
 
-const App = () => {
+const AppShell = () => {
+  const location = useLocation()
+  useScrollReveal(location.pathname)
+
   return (
-    <BrowserRouter>
+    <div className="page-enter">
       <ScrollManager />
       <Navbar />
       <main>
-        <Routes>
+        <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
+    </div>
+  )
+}
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <AppShell />
     </BrowserRouter>
   )
 }

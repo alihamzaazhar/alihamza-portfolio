@@ -1,139 +1,148 @@
 import { Link } from 'react-router-dom'
+import { PROJECTS } from '../data/projects'
 import ContactSection from '../components/ContactSection'
 import ProjectsList from '../components/ProjectsList'
 import SectionHead from '../components/SectionHead'
 
-const META = [
-  { label: 'Role', value: 'Mobile & Immersive Engineer' },
-  { label: 'Based in', value: 'Lahore, Pakistan' },
-  { label: 'Currently', value: 'GeniusXR · Remote' },
-]
-
-const SOCIAL = [
-  { label: 'GitHub', href: 'https://github.com/alihamzaazhar' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ali-hamza-926041350/' },
-  { label: 'Email', href: 'mailto:alihamza124.ah@gmail.com' },
-]
-
-const APPROACH = [
+const HIGHLIGHTS = [
   {
-    title: 'Cross-platform first',
-    body: 'Build once with React Native and ship reliably to both iOS and Android, dropping to native modules when performance demands it.',
+    title: 'React Native',
+    body: 'Cross-platform apps with production-ready architecture and native integrations.',
   },
   {
-    title: 'Immersive by design',
-    body: 'Bring AR/VR, 3D and Gaussian splatting into mobile through Three.js, WebView bridges and Unity integration.',
+    title: 'Immersive 3D',
+    body: 'AR/VR, Three.js, WebView and Unity integrations when the product needs depth.',
   },
   {
-    title: 'Production-minded',
-    body: 'Care about performance, reliability and the small details of user experience — from first paint to release.',
+    title: 'Mobile Systems',
+    body: 'Firebase, Stripe, WebSockets, notifications and native modules for real apps.',
   },
 ]
 
-const TOOLS: Record<string, string[]> = {
-  Core: ['React Native', 'TypeScript', 'JavaScript', 'React'],
-  'Immersive / 3D': ['Three.js', 'Gaussian Splatting', 'Unity', 'WebView Bridges'],
-  Platform: ['Native iOS Modules', 'Native Android Modules', 'Firebase', 'REST APIs'],
-  Systems: ['WebSockets', 'Stripe', 'E-commerce', 'Performance Tuning'],
-}
+const EXPERTISE = [
+  'React Native Development',
+  'Cross-Platform Architecture',
+  'Native Android & iOS Modules',
+  'AR/VR & 3D Mobile Experiences',
+  'Three.js + WebView',
+  'Unity Integration',
+  'Firebase + REST APIs',
+  'Stripe + E-commerce',
+]
 
 const Home = () => {
-  return (
-    <div>
-      {/* Hero */}
-      <section className="wrap pt-36 pb-20">
-        <p className="label">Software Engineer · React Native</p>
-        <h1 className="display mt-5 text-[clamp(34px,6vw,64px)] leading-[1.08]">
-          Ali Hamza builds cross-platform mobile apps with{' '}
-          <span className="text-[var(--accent)]">React Native</span>, AR/VR and
-          immersive <span className="italic">3D experiences</span>.
-        </h1>
+  const featured = PROJECTS[0]
 
-        {/* Meta strip fills the width and grounds the hero */}
-        <div className="mt-12 grid gap-x-10 gap-y-6 border-t border-[var(--line)] pt-6 sm:grid-cols-2 lg:grid-cols-4">
-          {META.map((m) => (
-            <div key={m.label}>
-              <p className="label">{m.label}</p>
-              <p className="mt-1 text-[15px]">{m.value}</p>
+  return (
+    <div className="shell">
+      <section className="wrap pt-16 pb-16 sm:pt-20 lg:pt-28">
+        <div className="hero-grid items-start lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="space-y-7" data-reveal>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="chip">Mobile engineering</span>
+              <span className="chip">AR/VR and 3D</span>
             </div>
-          ))}
-          <div>
-            <p className="label">Links</p>
-            <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-[15px]">
-              {SOCIAL.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="link-underline"
-                >
-                  {s.label}
-                </a>
+
+            <h1 className="display max-w-4xl text-[clamp(40px,7vw,84px)] leading-[0.95] tracking-[-0.05em]">
+              Building portfolio-grade mobile products with real engineering depth.
+            </h1>
+
+            <p className="max-w-2xl text-[16px] leading-8 text-[var(--muted)] sm:text-[18px]">
+              I design and ship React Native apps that feel deliberate, fast, and
+              technically solid. My work spans native modules, immersive 3D,
+              Firebase, Stripe, and production mobile systems.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="#work"
+                className="inline-flex items-center gap-2 rounded-full border border-[rgba(94,234,212,0.35)] bg-[rgba(94,234,212,0.1)] px-5 py-3 text-sm font-medium text-[var(--ink)] transition hover:-translate-y-0.5 hover:border-[rgba(94,234,212,0.6)]"
+              >
+                View selected work
+              </a>
+              <Link to="/about" className="label link-underline">
+                Read the full background
+              </Link>
+            </div>
+
+            <div className="grid gap-4 pt-2 sm:grid-cols-3">
+              {HIGHLIGHTS.map((item) => (
+                <div key={item.title} className="panel rounded-3xl p-5" data-reveal>
+                  <p className="label">{item.title}</p>
+                  <p className="mt-3 text-[15px] leading-7 text-[var(--muted)]">{item.body}</p>
+                </div>
               ))}
             </div>
           </div>
-        </div>
 
-        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <a
-            href="#work"
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--ink)] px-6 py-2.5 text-sm transition-colors hover:bg-[var(--ink)] hover:text-[var(--bg)]"
-          >
-            View selected work →
-          </a>
-          <a href="#contact" className="label link-underline">
-            Get in touch
-          </a>
+          <div className="space-y-4" data-reveal data-reveal-delay="120">
+            <article className="hero-card rounded-[28px]">
+              <div className="img-frame border-b border-[var(--line)]">
+                <img src={featured.image} alt={featured.title} className="img-cover" />
+              </div>
+              <div className="space-y-4 p-5">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="label">Featured project</p>
+                    <h2 className="display mt-1 text-[28px]">{featured.title}</h2>
+                  </div>
+                  <span className="chip border-[rgba(94,234,212,0.28)] bg-[rgba(94,234,212,0.06)]">
+                    {featured.status}
+                  </span>
+                </div>
+                <p className="text-[15px] leading-7 text-[var(--muted)]">{featured.description}</p>
+                <div className="stack-list">
+                  {featured.techStack.map((tech) => (
+                    <span key={tech} className="stack-pill">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="panel rounded-3xl p-5" data-reveal data-reveal-delay="160">
+                <p className="label">Based in</p>
+                <p className="mt-3 text-[18px] font-medium">Lahore, Pakistan</p>
+              </div>
+              <div className="panel rounded-3xl p-5" data-reveal data-reveal-delay="200">
+                <p className="label">Currently</p>
+                <p className="mt-3 text-[18px] font-medium">GeniusXR · Remote</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 01 — Selected Work */}
       <section id="work" className="wrap scroll-mt-24 py-16">
         <SectionHead num="01" title="Selected Work" />
         <ProjectsList />
       </section>
 
-      {/* 02 — Approach */}
+      <section id="expertise" className="wrap scroll-mt-24 py-16">
+        <SectionHead num="02" title="Expertise" />
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {EXPERTISE.map((item) => (
+            <div key={item} className="panel rounded-3xl p-5" data-reveal>
+              <p className="text-[15px] font-medium text-[var(--ink)]">{item}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section id="approach" className="wrap scroll-mt-24 py-16">
-        <SectionHead num="02" title="Approach" />
-        <div className="grid gap-x-10 gap-y-10 sm:grid-cols-3">
-          {APPROACH.map((item) => (
-            <div key={item.title}>
-              <h3 className="display text-xl">{item.title}</h3>
-              <p className="mt-3 text-[15px] text-[var(--muted)]">{item.body}</p>
+        <SectionHead num="03" title="Approach" />
+        <div className="grid gap-4 md:grid-cols-3">
+          {HIGHLIGHTS.map((item) => (
+            <div key={item.title} className="panel rounded-3xl p-6" data-reveal>
+              <h3 className="display text-[22px]">{item.title}</h3>
+              <p className="mt-4 text-[15px] leading-7 text-[var(--muted)]">{item.body}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 03 — Tools */}
-      <section id="tools" className="wrap scroll-mt-24 py-16">
-        <SectionHead num="03" title="Tools" />
-        <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
-          {Object.entries(TOOLS).map(([group, items]) => (
-            <div key={group} className="border-t border-[var(--line)] pt-4">
-              <p className="label mb-3">{group}</p>
-              <ul className="flex flex-wrap gap-x-5 gap-y-1">
-                {items.map((item) => (
-                  <li key={item} className="text-[15px]">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <p className="mt-10 text-[15px] text-[var(--muted)]">
-          More on my background, experience and education{' '}
-          <Link to="/about" className="link-underline text-[var(--ink)]">
-            on the about page
-          </Link>
-          .
-        </p>
-      </section>
-
-      {/* 04 — Contact */}
       <ContactSection />
     </div>
   )

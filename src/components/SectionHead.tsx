@@ -4,7 +4,7 @@ type SectionHeadProps = {
 }
 
 const SectionHead = ({ num, title }: SectionHeadProps) => (
-  <div className="sec-head">
+  <div className="sec-head" data-reveal>
     <span className="sec-num">{num}</span>
     <h2 className="sec-title">{title}</h2>
     <span className="sec-rule" />
